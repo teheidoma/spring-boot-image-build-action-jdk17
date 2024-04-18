@@ -4,6 +4,7 @@ import subprocess
 import os
 import tabulate
 
+
 def run_and_print_output(arg):
     if type(arg) == type([]):
         print(' '.join(arg))
@@ -57,5 +58,7 @@ with open(github_output_file, "a") as output_file:
     output_file.write(f"IMAGE_NAME={json.dumps(list(map(lambda x: x[0], matches)))}\n")
     output_file.write(f"IMAGE_TAG={matches[0][1]}\n")
 with open(github_step_summary_file, "a") as output_file:
+    if include_commit_sha:
+        matches = list(map(lambda x: (x[0], x[1] + '-' + github_sha), matches))
     markdown = tabulate.tabulate(matches, tablefmt='pipe', numalign='left', headers=['image name', 'image tag'])
     output_file.write(markdown)
