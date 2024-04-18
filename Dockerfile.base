@@ -1,10 +1,11 @@
-FROM dubuntu
+FROM ubuntu
 
 LABEL org.opencontainers.image.source="https://github.com/teheidoma/spring-boot-image-build-action-jdk17"
 
 RUN apt update \
-    && apt install -y bash curl git zip docker.io python3 \
+    && apt install -y bash curl git zip docker.io python3 pip \
     && apt-get clean \
+    && pip install tabulate \
     && curl -s "https://get.sdkman.io" | bash
 
 SHELL ["/bin/bash", "-c"]

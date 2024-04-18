@@ -1,4 +1,4 @@
-FROM ghcr.io/teheidoma/spring-boot-image-build-action:0.0.1
+FROM ghcr.io/teheidoma/spring-boot-image-build-action-jdk17:0.0.2
 
 COPY entrypoint.py /entrypoint.py
 
