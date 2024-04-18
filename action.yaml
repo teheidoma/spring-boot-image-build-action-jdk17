@@ -1,4 +1,4 @@
-name: 'Spring boot image build'
+name: 'Spring boot image build jdk17'
 branding:
   icon: arrow-up-circle
   color: green
