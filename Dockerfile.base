@@ -1,0 +1,14 @@
+FROM dubuntu
+
+LABEL org.opencontainers.image.source="https://github.com/teheidoma/spring-boot-image-build-action-jdk17"
+
+RUN apt update \
+    && apt install -y bash curl git zip docker.io python3 \
+    && apt-get clean \
+    && curl -s "https://get.sdkman.io" | bash
+
+SHELL ["/bin/bash", "-c"]
+
+RUN source "/root/.sdkman/bin/sdkman-init.sh"   \
+                && sdk install java 17.0.10-graal \
+                && sdk flush

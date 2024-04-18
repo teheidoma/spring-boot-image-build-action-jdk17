@@ -1,0 +1,26 @@
+name: 'Spring boot image build'
+branding:
+  icon: arrow-up-circle
+  color: green
+description: "This action will build your spring application via 'bootBuildImage' and publish it ! hooray"
+inputs:
+  registry_username:
+    description: 'registry username'
+    required: false
+  registry_password:
+    description: 'registry password'
+    required: false
+  registry_hostname:
+    description: 'registry hostname'
+    default: 'docker.io'
+  include_commit_sha:
+    description: 'include commit SHA to image tag'
+    default: 'false'
+outputs:
+  tag:
+    description: 'image name'
+  image_tag:
+    description: 'image tag'
+runs:
+  using: docker
+  image: Dockerfile
