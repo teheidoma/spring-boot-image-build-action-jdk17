@@ -56,7 +56,11 @@ for match in matches:
 
 with open(github_output_file, "a") as output_file:
     output_file.write(f"IMAGE_NAME={json.dumps(list(map(lambda x: x[0], matches)))}\n")
-    output_file.write(f"IMAGE_TAG={matches[0][1]}\n")
+    if include_commit_sha:
+        output_file.write(f"IMAGE_TAG={matches[0][1]}-{github_sha}\n")
+    else:
+        output_file.write(f"IMAGE_TAG={matches[0][1]}\n")
+
 with open(github_step_summary_file, "a") as output_file:
     if include_commit_sha:
         matches = list(map(lambda x: (x[0], x[1] + '-' + github_sha), matches))
